@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myplan.myplan.myplan.plan.dao.PlanDAO">
+
+    <insert id="insertPlan"
+            parameterType="com.myplan.myplan.myplan.plan.vo.PlanVO"
+            useGeneratedKeys="true"
+            keyProperty="planId"
+            keyColumn="PLAN_ID">
+        INSERT INTO PLAN (
+        PLAN_DATE,
+        TITLE,
+        SPECIFIC_CONTENT,
+        MEASURABLE_CONTENT,
+        ACHIEVABLE_CONTENT,
+        RELEVANT_CONTENT,
+        TIME_LIMIT,
+        CREATED_DATE,
+        UPDATED_DATE
+        )
+        VALUES (
+        #{planDate},
+        #{title},
+        #{specificContent},
+        #{measurableContent},
+        #{achievableContent},
+        #{relevantContent},
+        #{timeLimit},
+        SYSDATE,
+        SYSDATE
+        )
+    </insert>
+
+    <insert id="insertTimeBlock"
+            parameterType="com.myplan.myplan.myplan.plan.vo.TimeBlockVO">
+        INSERT INTO TIME_BLOCK (
+        PLAN_ID,
+        START_TIME,
+        END_TIME,
+        CONTENT,
+        MEMO,
+        STATUS,
+        CREATED_DATE
+        )
+        VALUES (
+        #{planId},
+        #{startTime},
+        #{endTime},
+        #{content},
+        #{memo},
+        NVL(#{status}, 'TODO'),
+        SYSDATE
+        )
+    </insert>
+
+    <select id="selectPlanList"
+            resultType="com.myplan.myplan.myplan.plan.vo.PlanVO">
+        SELECT
+        PLAN_ID,
+        PLAN_DATE,
+        TITLE,
+        SPECIFIC_CONTENT,
+        MEASURABLE_CONTENT,
+        ACHIEVABLE_CONTENT,
+        RELEVANT_CONTENT,
+        TIME_LIMIT,
+        CREATED_DATE,
+        UPDATED_DATE
+        FROM PLAN
+        ORDER BY PLAN_DATE DESC, PLAN_ID DESC
+    </select>
+
+    <select id="selectTodayPlan"
+            resultType="com.myplan.myplan.myplan.plan.vo.PlanVO">
+        SELECT
+        PLAN_ID,
+        PLAN_DATE,
+        TITLE,
+        SPECIFIC_CONTENT,
+        MEASURABLE_CONTENT,
+        ACHIEVABLE_CONTENT,
+        RELEVANT_CONTENT,
+        TIME_LIMIT,
+        CREATED_DATE,
+        UPDATED_DATE
+        FROM PLAN
+        WHERE TRUNC(PLAN_DATE) = TRUNC(SYSDATE)
+        ORDER BY PLAN_ID DESC
+        FETCH FIRST 1 ROWS ONLY
+    </select>
+
+    <select id="selectPlanById"
+            parameterType="long"
+            resultType="com.myplan.myplan.myplan.plan.vo.PlanVO">
+        SELECT
+        PLAN_ID,
+        PLAN_DATE,
+        TITLE,
+        SPECIFIC_CONTENT,
+        MEASURABLE_CONTENT,
+        ACHIEVABLE_CONTENT,
+        RELEVANT_CONTENT,
+        TIME_LIMIT,
+        CREATED_DATE,
+        UPDATED_DATE
+        FROM PLAN
+        WHERE PLAN_ID = #{planId}
+    </select>
+
+    <select id="selectTimeBlocksByPlanId"
+            parameterType="long"
+            resultType="com.myplan.myplan.myplan.plan.vo.TimeBlockVO">
+        SELECT
+        BLOCK_ID,
+        PLAN_ID,
+        START_TIME,
+        END_TIME,
+        CONTENT,
+        MEMO,
+        STATUS,
+        CREATED_DATE
+        FROM TIME_BLOCK
+        WHERE PLAN_ID = #{planId}
+        ORDER BY START_TIME ASC, BLOCK_ID ASC
+    </select>
+
+    <update id="updatePlan"
+            parameterType="com.myplan.myplan.myplan.plan.vo.PlanVO">
+        UPDATE PLAN
+        SET
+        PLAN_DATE = #{planDate},
+        TITLE = #{title},
+        SPECIFIC_CONTENT = #{specificContent},
+        MEASURABLE_CONTENT = #{measurableContent},
+        ACHIEVABLE_CONTENT = #{achievableContent},
+        RELEVANT_CONTENT = #{relevantContent},
+        TIME_LIMIT = #{timeLimit},
+        UPDATED_DATE = SYSDATE
+        WHERE PLAN_ID = #{planId}
+    </update>
+
+    <delete id="deleteTimeBlocksByPlanId"
+            parameterType="long">
+        DELETE FROM TIME_BLOCK
+        WHERE PLAN_ID = #{planId}
+    </delete>
+
+    <delete id="deletePlan"
+            parameterType="long">
+        DELETE FROM PLAN
+        WHERE PLAN_ID = #{planId}
+    </delete>
+
+
+    <select id="selectPlanByDate"
+            parameterType="string"
+            resultType="com.myplan.myplan.myplan.plan.vo.PlanVO">
+        SELECT
+        PLAN_ID,
+        PLAN_DATE,
+        TITLE,
+        SPECIFIC_CONTENT,
+        MEASURABLE_CONTENT,
+        ACHIEVABLE_CONTENT,
+        RELEVANT_CONTENT,
+        TIME_LIMIT,
+        CREATED_DATE,
+        UPDATED_DATE
+        FROM PLAN
+        WHERE TRUNC(PLAN_DATE) = TO_DATE(#{planDate}, 'YYYY-MM-DD')
+        ORDER BY PLAN_ID DESC
+        FETCH FIRST 1 ROWS ONLY
+    </select>
+
+    <update id="updateTimeBlockStatus"
+            parameterType="com.myplan.myplan.myplan.plan.vo.TimeBlockVO">
+        UPDATE TIME_BLOCK
+        SET STATUS = #{status}
+        WHERE BLOCK_ID = #{blockId}
+    </update>
+
+</mapper>

@@ -1,0 +1,186 @@
+.list-page h2 {
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.list-page > p {
+  margin-top: 8px;
+  color: #6b7280;
+}
+
+.plan-list {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 980px;
+}
+
+.plan-card {
+  background: white;
+  border-radius: 22px;
+  padding: 24px 28px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+}
+
+.plan-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.plan-top h3 {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.plan-top span {
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.card-actions button {
+  height: 34px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 800;
+}
+
+.view-btn {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.edit-btn {
+  background: #ede9fe;
+  color: #6c4df6;
+}
+
+.delete-btn {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.list-progress {
+  margin-top: 20px;
+}
+
+.list-progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.list-progress-info span {
+  color: #6c4df6;
+  font-weight: 900;
+}
+
+.list-progress-info small {
+  color: #6b7280;
+  font-weight: 700;
+}
+
+.list-progress-bar {
+  height: 10px;
+  background: #ede9fe;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.list-progress-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #6c4df6, #8b5cf6);
+  transition: 0.3s;
+}
+
+.block-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.block {
+  background: #f8faff;
+  padding: 12px 14px;
+  border-radius: 12px;
+  color: #374151;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.block > div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.block-time {
+  color: #6c4df6;
+  font-weight: 900;
+}
+
+.block-content {
+  color: #374151;
+}
+
+.block-done {
+  opacity: 0.55;
+}
+
+.block-done .block-content {
+  text-decoration: line-through;
+}
+
+.list-status {
+  min-width: 64px;
+  text-align: center;
+  padding: 6px 0;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.done-status {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.todo-status {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.empty-list {
+  margin-top: 30px;
+  height: 260px;
+  max-width: 980px;
+  background: white;
+  border-radius: 22px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #6b7280;
+}
+
+.empty-list div {
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+
+.empty-list h3 {
+  color: #111827;
+  margin-bottom: 8px;
+}

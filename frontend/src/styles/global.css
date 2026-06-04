@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Pretendard", "Inter", "Segoe UI", sans-serif;
+  background: #f8faff;
+  color: #111827;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+  background: #f8faff;
+}
+
+.main-content {
+  flex: 1;
+  padding: 36px 48px;
+}
