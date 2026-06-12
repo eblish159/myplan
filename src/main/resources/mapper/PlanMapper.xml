@@ -143,14 +143,12 @@
         WHERE PLAN_ID = #{planId}
     </update>
 
-    <delete id="deleteTimeBlocksByPlanId"
-            parameterType="long">
+    <delete id="deleteTimeBlocksByPlanId" parameterType="long">
         DELETE FROM TIME_BLOCK
         WHERE PLAN_ID = #{planId}
     </delete>
 
-    <delete id="deletePlan"
-            parameterType="long">
+    <delete id="deletePlan" parameterType="long">
         DELETE FROM PLAN
         WHERE PLAN_ID = #{planId}
     </delete>

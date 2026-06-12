@@ -88,6 +88,7 @@ public class PlanServiceImpl implements PlanService {
 
     @Override
     public void deletePlan(Long planId) {
+        planDAO.deleteTimeBlocksByPlanId(planId);
         planDAO.deletePlan(planId);
     }
 
