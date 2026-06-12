@@ -12,5 +12,5 @@ spring:
     password: ${DB_PASSWORD}
 
 mybatis:
-  mapper-locations: classpath:mapper/PlanMapper.xml
+  mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.myplan.myplan.myplan
