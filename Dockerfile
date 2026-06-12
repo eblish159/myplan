@@ -7,6 +7,8 @@ COPY . .
 RUN chmod +x gradlew
 RUN ./gradlew clean build -x test
 
+RUN jar tf build/libs/myplan-0.0.1-SNAPSHOT.jar | grep PlanMapper
+
 EXPOSE 18080
 
 CMD ["java","-jar","build/libs/myplan-0.0.1-SNAPSHOT.jar"]
