@@ -11,7 +11,10 @@ import com.myplan.myplan.myplan.plan.vo.TimeBlockVO;
 @RestController
 @RequestMapping("/api/plans")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+        "http://localhost:5173",
+        "https://myplan-qh0v.onrender.com"
+})
 public class PlanController {
 
     private final PlanService planService;

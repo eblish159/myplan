@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:18080/api",
+  baseURL: "https://myplan-qh0v.onrender.com/api",
 });
 
 
@@ -35,14 +35,11 @@ export const deletePlan = (planId) => {
 };
 
 
-// 시간 완료 상태 변경
 export const updateTimeBlockStatus = (blockId, status) => {
-
   return api.put(
     `/plans/time-blocks/${blockId}/status`,
     {
       status: status
     }
   );
-
 };
