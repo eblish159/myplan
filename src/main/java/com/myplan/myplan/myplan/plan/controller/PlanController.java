@@ -13,7 +13,7 @@ import com.myplan.myplan.myplan.plan.vo.TimeBlockVO;
 @RequiredArgsConstructor
 @CrossOrigin(origins = {
         "http://localhost:5173",
-        "https://myplan-qh0v.onrender.com"
+        "https://myplan-mu.vercel.app"
 })
 public class PlanController {
 
