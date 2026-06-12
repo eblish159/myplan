@@ -87,9 +87,15 @@ public class PlanServiceImpl implements PlanService {
     }
 
     @Override
+    @Transactional
     public void deletePlan(Long planId) {
+
+        // 1. 자식 먼저 삭제
         planDAO.deleteTimeBlocksByPlanId(planId);
+
+        // 2. 부모 삭제
         planDAO.deletePlan(planId);
+
     }
 
     @Override
