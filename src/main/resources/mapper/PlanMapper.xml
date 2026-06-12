@@ -6,6 +6,35 @@
 
 <mapper namespace="com.myplan.myplan.myplan.plan.dao.PlanDAO">
 
+    <insert id="insertPlan"
+            parameterType="com.myplan.myplan.myplan.plan.vo.PlanVO"
+            useGeneratedKeys="true"
+            keyProperty="planId"
+            keyColumn="PLAN_ID">
+        INSERT INTO PLAN (
+        PLAN_DATE,
+        TITLE,
+        SPECIFIC_CONTENT,
+        MEASURABLE_CONTENT,
+        ACHIEVABLE_CONTENT,
+        RELEVANT_CONTENT,
+        TIME_LIMIT,
+        CREATED_DATE,
+        UPDATED_DATE
+        )
+        VALUES (
+        #{planDate},
+        #{title},
+        #{specificContent},
+        #{measurableContent},
+        #{achievableContent},
+        #{relevantContent},
+        #{timeLimit},
+        SYSDATE,
+        SYSDATE
+        )
+    </insert>
+
     <insert id="insertTimeBlock"
             parameterType="com.myplan.myplan.myplan.plan.vo.TimeBlockVO">
         INSERT INTO TIME_BLOCK (
