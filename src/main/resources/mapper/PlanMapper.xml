@@ -52,7 +52,7 @@
         #{endTime},
         #{content},
         #{memo},
-        NVL(#{status}, 'TODO'),
+        NVL(#{status, jdbcType=VARCHAR}, 'TODO')
         SYSDATE
         )
     </insert>
